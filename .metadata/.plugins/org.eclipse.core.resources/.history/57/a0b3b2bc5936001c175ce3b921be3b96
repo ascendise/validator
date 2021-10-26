@@ -1,0 +1,8 @@
+package ch.ascendise.Validator;
+
+public @interface Range {
+	
+	int min();
+	int max();
+
+}

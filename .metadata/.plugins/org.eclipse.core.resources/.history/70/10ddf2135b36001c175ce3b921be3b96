@@ -1,0 +1,39 @@
+package ch.ascendise.Validator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ValidatorTest {
+
+	@Test
+	void validObject()
+	{
+		var testObject = new TestObject();
+		testObject.setNotNull("");
+		testObject.setMaxLength("1234567890123456789");
+		testObject.setMinLength("1234");
+		testObject.setRange("12345678");
+		testObject.setNotBlank("a");
+		testObject.setNotEmpty(" ");
+		var validator = new Validator(testObject);
+		boolean isValid = validator.IsValid();
+		assertTrue(isValid, "Valid object got identified as invalid");
+	}
+	
+	@Test
+	void invalidObject()
+	{
+		var testObject = new TestObject();
+		testObject.setNotNull("");
+		testObject.setMaxLength("1234567890123456789");
+		testObject.setMinLength("1234");
+		testObject.setRange("12345678");
+		testObject.setNotBlank("a");
+		testObject.setNotEmpty(" ");
+		var validator = new Validator(testObject);
+		boolean isValid = validator.IsValid();
+		assertTrue(isValid, "Valid object got identified as invalid");
+	}
+
+}

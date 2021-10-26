@@ -1,0 +1,16 @@
+package ch.ascendise.Validator;
+
+public class TestObject {
+		@NotNull
+		private String notNull;
+		@MaxLength(20)
+		private String maxLength;
+		@MinLength(3)
+		private String minLength;
+		@Range(3, 20)
+		private String range;
+		@NotEmpty
+		private String notEmpty;
+		@NotBlank
+		private String notBlank;
+}

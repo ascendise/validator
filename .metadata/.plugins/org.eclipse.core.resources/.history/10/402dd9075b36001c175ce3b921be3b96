@@ -1,0 +1,14 @@
+package ch.ascendise.Validator;
+
+public class Validator {
+	
+	public Validator(Object obj)
+	{
+		
+	}
+
+	public boolean IsValid() {
+		throw new NotImplementedException();
+	}
+
+}

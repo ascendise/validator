@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.TestObject"/>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.Annotations.NotNull"/>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.Annotations.MaxLength"/>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.Annotations.Range"/>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.Annotations.NotEmpty"/>
+    <fullyQualifiedTypeName name="ch.ascendise.Validator.Annotations.NotBlank"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+</qualifiedTypeNameHistroy>

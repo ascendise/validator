@@ -1,0 +1,20 @@
+package ch.ascendise.Validator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ValidatorTest {
+
+	@Test
+	void validObject()
+	{
+		var testObject = new TestObject();
+		testObject.setNotNull("");
+		testObject.setMaxLength("");
+		testObject.setMinLength("aaaa");
+		testObject.setRange("aaaaaaaa");
+		testObject.set
+	}
+
+}
