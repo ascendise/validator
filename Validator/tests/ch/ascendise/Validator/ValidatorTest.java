@@ -40,25 +40,25 @@ class ValidatorTest {
 	@Test
 	void validObject_isValid()
 	{
-		var validator = new Validator<TestObject>(validTestObject);
-		boolean isValid = validator.IsValid();
+		var validator = new ValidatorImpl<TestObject>(validTestObject);
+		boolean isValid = validator.isValid();
 		assertTrue(isValid, "Valid object got identified as invalid");
 	}
 	
 	@Test
 	void invalidObject_isValid()
 	{
-		var validator = new Validator<TestObject>(invalidTestObject);
-		boolean isValid = validator.IsValid();
+		var validator = new ValidatorImpl<TestObject>(invalidTestObject);
+		boolean isValid = validator.isValid();
 		assertTrue(isValid, "Invalid object got identified as invalid");
 	}
 	
 	@Test
 	void invalidObject_getErrors()
 	{
-		var validator = new Validator<TestObject>(invalidTestObject);
-		String[] errors = validator.getErrors();
-		assertEquals(6, errors.length, "Error list does not contain all errors");
+		var validator = new ValidatorImpl<TestObject>(invalidTestObject);
+		String errorMessage = validator.getErrorMessage();
+		assertFalse(errorMessage.isBlank(), "Error list does not contain all errors");
 	}
 
 }
