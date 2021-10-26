@@ -1,10 +1,12 @@
 package ch.ascendise.Validator;
 
-public class Validator {
+public class Validator<T> {
 	
-	public Validator()
+	private T object;
+	
+	public Validator(T object)
 	{
-		
+		this.object = object;
 	}
 
 	public boolean IsValid() {

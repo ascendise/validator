@@ -40,7 +40,7 @@ class ValidatorTest {
 	@Test
 	void validObject_isValid()
 	{
-		var validator = new Validator(validTestObject);
+		var validator = new Validator<TestObject>(validTestObject);
 		boolean isValid = validator.IsValid();
 		assertTrue(isValid, "Valid object got identified as invalid");
 	}
@@ -48,7 +48,7 @@ class ValidatorTest {
 	@Test
 	void invalidObject_isValid()
 	{
-		var validator = new Validator(invalidTestObject);
+		var validator = new Validator<TestObject>(invalidTestObject);
 		boolean isValid = validator.IsValid();
 		assertTrue(isValid, "Invalid object got identified as invalid");
 	}
@@ -56,7 +56,7 @@ class ValidatorTest {
 	@Test
 	void invalidObject_getErrors()
 	{
-		var validator = new Validator(invalidTestObject);
+		var validator = new Validator<TestObject>(invalidTestObject);
 		String[] errors = validator.getErrors();
 		assertEquals(6, errors.length, "Error list does not contain all errors");
 	}
