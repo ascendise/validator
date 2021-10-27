@@ -19,6 +19,10 @@ public class ValidatorFactory {
 			{
 				validators.add(new NotNullValidator(value));
 			}
+			else if(annotation instanceof NotEmpty) 
+			{
+				validators.add(new NotEmptyValidator((String)value));
+			}
 		}
 		return validators;
 	}

@@ -58,6 +58,7 @@ class ValidatorTest {
 	{
 		var validator = new ValidatorImpl<TestObject>(invalidTestObject);
 		String errorMessage = validator.getErrorMessage();
+		System.out.println(errorMessage);
 		assertFalse(errorMessage.isBlank(), "Error list does not contain all errors");
 	}
 

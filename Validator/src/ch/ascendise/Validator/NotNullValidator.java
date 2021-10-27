@@ -16,6 +16,10 @@ public class NotNullValidator implements Validator{
 
 	@Override
 	public String getErrorMessage() {
+		if(isValid())
+		{
+			return "";
+		}
 		return "Field is null";
 	}
 
