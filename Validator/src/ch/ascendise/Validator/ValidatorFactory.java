@@ -23,6 +23,10 @@ public class ValidatorFactory {
 			{
 				validators.add(new NotEmptyValidator((String)value));
 			}
+			else if(annotation instanceof NotBlank)
+			{
+				validators.add(new NotBlankValidator((String)value));
+			}
 		}
 		return validators;
 	}
