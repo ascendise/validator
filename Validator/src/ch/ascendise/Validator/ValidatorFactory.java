@@ -20,6 +20,13 @@ public class ValidatorFactory {
 		validators.put(NotNull.class, new NotNullValidator(value));
 		validators.put(NotEmpty.class, new NotEmptyValidator(value));
 		validators.put(NotBlank.class, new NotBlankValidator(value));
+		var lengthAnnotation = field.getDeclaredAnnotation(Length.class);
+		if(lengthAnnotation != null)
+		{
+			var min = lengthAnnotation.min();
+			var max = lengthAnnotation.max();
+			validators.put(Length.class, new LengthValidator(value, min, max));
+		}
 	}
 
 	private Object getFieldValue(Object object)

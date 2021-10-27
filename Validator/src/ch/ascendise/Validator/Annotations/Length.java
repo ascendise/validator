@@ -4,8 +4,9 @@ import java.lang.annotation.*;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MaxLength {
-
-	int max();
+public @interface Length {
+	
+	int max() default Integer.MAX_VALUE;
+	int min() default 0;
 
 }

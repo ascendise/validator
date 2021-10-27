@@ -5,11 +5,11 @@ import ch.ascendise.Validator.Annotations.*;
 public class TestObject {
 		@NotNull
 		private String notNull;
-		@MaxLength(max = 20)
+		@Length(max = 20)
 		private String maxLength;
-		@MinLength(min = 3)
+		@Length(min = 3)
 		private String minLength;
-		@Range(min = 3, max = 20)
+		@Length(min = 3, max = 20)
 		private String range;
 		@NotEmpty
 		private String notEmpty;
