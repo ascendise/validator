@@ -21,14 +21,16 @@ public class ValidatorImpl<T> implements Validator{
 		var fields = cls.getDeclaredFields();
 		for(var field : fields)
 		{
-			var fieldValidators = ValidatorFactory.getValidators(object, field);
+			var factory = new ValidatorFactory(object, field);
+			var fieldValidators = factory.getValidators();
 			validators.addAll(fieldValidators);
 		}
 		return validators;
 	}
 	
 	@Override
-	public boolean isValid() {
+	public boolean isValid() 
+	{
 		for(var validator : validators)
 		{
 			if(!validator.isValid())
@@ -40,7 +42,8 @@ public class ValidatorImpl<T> implements Validator{
 	}
 
 	@Override
-	public String getErrorMessage() {
+	public String getErrorMessage() 
+	{
 		StringBuilder errorMessage = new StringBuilder();
 		for(var validator : validators)
 		{

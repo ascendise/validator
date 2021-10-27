@@ -2,9 +2,9 @@ package ch.ascendise.Validator;
 
 public class NotEmptyValidator implements Validator{
 	
-	private String value;
+	private Object value;
 	
-	public NotEmptyValidator(String value)
+	public NotEmptyValidator(Object value)
 	{
 		this.value = value;
 	}
@@ -12,7 +12,8 @@ public class NotEmptyValidator implements Validator{
 	@Override
 	public boolean isValid() 
 	{
-		return !value.isEmpty();
+		String s = (String)value;
+		return !s.isEmpty();
 	}
 
 	@Override
