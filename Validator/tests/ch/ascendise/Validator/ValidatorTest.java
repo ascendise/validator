@@ -50,7 +50,7 @@ class ValidatorTest {
 	{
 		var validator = new ValidatorImpl<TestObject>(invalidTestObject);
 		boolean isValid = validator.isValid();
-		assertTrue(isValid, "Invalid object got identified as invalid");
+		assertFalse(isValid, "Invalid object got identified as invalid");
 	}
 	
 	@Test

@@ -1,22 +1,53 @@
 package ch.ascendise.Validator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ValidatorImpl<T> implements Validator{
 	
 	private T object;
+	private List<Validator> validators;
 	
 	public ValidatorImpl(T object)
 	{
 		this.object = object;
+		validators = getValidators();
+	}
+	
+	private List<Validator> getValidators()
+	{
+		var validators = new ArrayList<Validator>();
+		var cls = object.getClass();
+		var fields = cls.getDeclaredFields();
+		for(var field : fields)
+		{
+			var fieldValidators = ValidatorFactory.getValidators(object, field);
+			validators.addAll(fieldValidators);
+		}
+		return validators;
 	}
 	
 	@Override
 	public boolean isValid() {
-		throw new RuntimeException("Me no worky");
+		for(var validator : validators)
+		{
+			if(!validator.isValid())
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public String getErrorMessage() {
-		throw new RuntimeException("Me no worky");
+		StringBuilder errorMessage = new StringBuilder();
+		for(var validator : validators)
+		{
+			var message = validator.getErrorMessage() + "\n";
+			errorMessage.append(message);
+		}
+		return errorMessage.toString();
 	}
 
 }
