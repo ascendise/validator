@@ -1,59 +1,74 @@
 package ch.ascendise.Validator;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import ch.ascendise.Validator.Annotations.*;
 
 public class ValidatorFactory {
 	
-	private Map<Class<?>, Validator> validators = new HashMap<Class<?>, Validator>();
+	private Object object;
 	private Field field;
 	
 	public ValidatorFactory(Object object, Field field)
 	{
+		this.object = object;
 		this.field = field;
-		Object value = getFieldValue(object);
-		validators.put(NotNull.class, new NotNullValidator(value));
-		validators.put(NotEmpty.class, new NotEmptyValidator(value));
-		validators.put(NotBlank.class, new NotBlankValidator(value));
-		var lengthAnnotation = field.getDeclaredAnnotation(Length.class);
-		if(lengthAnnotation != null)
-		{
-			var min = lengthAnnotation.min();
-			var max = lengthAnnotation.max();
-			validators.put(Length.class, new LengthValidator(value, min, max));
-		}
-	}
-
-	private Object getFieldValue(Object object)
-	{
-		Object value = null;
-		try {
-			field.setAccessible(true);
-			value = field.get(object);
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		return value;
 	}
 	
 	public List<Validator> getValidators()
 	{
 		var validators = new ArrayList<Validator>();
-		var annotations = field.getAnnotations();
+		var annotations = field.getDeclaredAnnotations();
 		for(var annotation : annotations)
 		{
-			var validator = this.validators.get(annotation.annotationType());
+			var validator = getValidator(annotation);
 			if(validator != null)
 			{
 				validators.add(validator);
 			}
 		}
 		return validators;
+	}
+	
+	private Validator getValidator(Annotation annotation)
+	{
+		try
+		{
+			var validatorType = getValidatorType(annotation);
+			Method[] methods = annotation.annotationType().getDeclaredMethods();
+			Class<?>[] parameterTypes = new Class<?>[methods.length + 1];
+			Object[] parameterValues = new Object[methods.length + 1];
+			parameterTypes[0] = Object.class;
+			parameterValues[0] = field.get(object);
+			for(int i = 1; i < methods.length + 1; i++)
+			{
+				methods[i - 1].setAccessible(true);
+				Class<?> valueType = methods[i - 1].getReturnType();
+				parameterTypes[i] = valueType;
+				Object value = methods[i - 1].invoke(annotation, (Object[])null);
+				parameterValues[i] = value;
+			}
+			var constructor = validatorType.getConstructor(parameterTypes);
+			return constructor.newInstance(parameterValues);
+		}
+		catch(IllegalArgumentException | IllegalAccessException | NoSuchMethodException | 
+				SecurityException | InstantiationException | InvocationTargetException ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	private Class<? extends Validator> getValidatorType(Annotation annotation)
+	{
+		var fieldAnnotation = annotation.annotationType();
+		var validatorType = fieldAnnotation.getAnnotation(ValidatorType.class);
+		return validatorType.value();
 	}
 
 }
