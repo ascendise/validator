@@ -18,6 +18,7 @@ public class ValidatorFactory {
 	{
 		this.object = object;
 		this.field = field;
+		field.setAccessible(true);
 	}
 	
 	public List<Validator> getValidators()
