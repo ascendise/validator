@@ -40,29 +40,45 @@ public class ValidatorFactory {
 	{
 		try
 		{
+			Class<?>[] parameterTypes = getParameterTypes(annotation);
+			Object[] parameterValues = getParameterValues(annotation);
 			var validatorType = getValidatorType(annotation);
-			Method[] methods = annotation.annotationType().getDeclaredMethods();
-			Class<?>[] parameterTypes = new Class<?>[methods.length + 1];
-			Object[] parameterValues = new Object[methods.length + 1];
-			parameterTypes[0] = Object.class;
-			parameterValues[0] = field.get(object);
-			for(int i = 1; i < methods.length + 1; i++)
-			{
-				methods[i - 1].setAccessible(true);
-				Class<?> valueType = methods[i - 1].getReturnType();
-				parameterTypes[i] = valueType;
-				Object value = methods[i - 1].invoke(annotation, (Object[])null);
-				parameterValues[i] = value;
-			}
 			var constructor = validatorType.getConstructor(parameterTypes);
 			return constructor.newInstance(parameterValues);
 		}
-		catch(IllegalArgumentException | IllegalAccessException | NoSuchMethodException | 
-				SecurityException | InstantiationException | InvocationTargetException ex)
+		catch(ReflectiveOperationException ex)
 		{
 			ex.printStackTrace();
 			return null;
 		}
+	}
+	
+	private Class<?>[] getParameterTypes(Annotation annotation)
+	{
+		Method[] methods = annotation.annotationType().getDeclaredMethods();
+		Class<?>[] parameterTypes = new Class<?>[methods.length + 1];
+		parameterTypes[0] = Object.class;
+		for(int i = 0; i < methods.length; i++)
+		{
+			var method = methods[i];
+			method.setAccessible(true);
+			parameterTypes[i+1] = method.getReturnType();
+		}
+		return parameterTypes;
+	}
+	
+	private Object[] getParameterValues(Annotation annotation) throws ReflectiveOperationException
+	{
+		Method[] methods = annotation.annotationType().getDeclaredMethods();
+		Object[] parameterValues = new Object[methods.length + 1];
+		parameterValues[0] = field.get(object);
+		for(int i = 0; i < methods.length; i++)
+		{
+			var method = methods[i];
+			method.setAccessible(true);
+			parameterValues[i+1] = method.invoke(annotation, (Object[])null);
+		}
+		return parameterValues;
 	}
 	
 	private Class<? extends Validator> getValidatorType(Annotation annotation)
