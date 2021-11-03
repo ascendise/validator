@@ -3,12 +3,12 @@ package ch.ascendise.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidatorImpl<T> implements Validator{
+public class ValidatorImpl implements Validator{
 	
-	private T object;
+	private Object object;
 	private List<Validator> validators;
 	
-	public ValidatorImpl(T object)
+	public ValidatorImpl(Object object)
 	{
 		this.object = object;
 		validators = getValidators();
