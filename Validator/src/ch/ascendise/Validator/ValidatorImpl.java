@@ -47,8 +47,11 @@ public class ValidatorImpl implements Validator{
 		StringBuilder errorMessage = new StringBuilder();
 		for(var validator : validators)
 		{
-			var message = validator.getErrorMessage() + "\n";
-			errorMessage.append(message);
+			var message = validator.getErrorMessage();
+			if(!message.isBlank())
+			{
+				errorMessage.append(message + "\n");
+			}
 		}
 		return errorMessage.toString();
 	}

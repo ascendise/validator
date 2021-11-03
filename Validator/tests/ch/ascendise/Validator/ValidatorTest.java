@@ -42,6 +42,7 @@ class ValidatorTest {
 	{
 		var validator = new ValidatorImpl(validTestObject);
 		boolean isValid = validator.isValid();
+		validator.getErrorMessage();
 		assertTrue(isValid, "Valid object got identified as invalid");
 	}
 	
