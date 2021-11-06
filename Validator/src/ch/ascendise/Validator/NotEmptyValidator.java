@@ -3,10 +3,12 @@ package ch.ascendise.Validator;
 public class NotEmptyValidator implements Validator{
 	
 	private Object value;
+	private String fieldName;
 	
-	public NotEmptyValidator(Object value)
+	public NotEmptyValidator(Object value, String fieldName)
 	{
 		this.value = value;
+		this.fieldName = fieldName;
 	}
 
 	@Override
@@ -23,7 +25,7 @@ public class NotEmptyValidator implements Validator{
 		{
 			return "";
 		}
-		return "Field is empty";
+		return fieldName + ": Value is empty";
 	}
 	
 	

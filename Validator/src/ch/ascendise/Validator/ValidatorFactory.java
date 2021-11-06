@@ -55,13 +55,14 @@ public class ValidatorFactory {
 	private Class<?>[] getParameterTypes(Annotation annotation)
 	{
 		Method[] methods = annotation.annotationType().getDeclaredMethods();
-		Class<?>[] parameterTypes = new Class<?>[methods.length + 1];
+		Class<?>[] parameterTypes = new Class<?>[methods.length + 2];
 		parameterTypes[0] = Object.class;
+		parameterTypes[1] = String.class;
 		for(int i = 0; i < methods.length; i++)
 		{
 			var method = methods[i];
 			method.setAccessible(true);
-			parameterTypes[i+1] = method.getReturnType();
+			parameterTypes[i+2] = method.getReturnType();
 		}
 		return parameterTypes;
 	}
@@ -69,13 +70,14 @@ public class ValidatorFactory {
 	private Object[] getParameterValues(Annotation annotation) throws ReflectiveOperationException
 	{
 		Method[] methods = annotation.annotationType().getDeclaredMethods();
-		Object[] parameterValues = new Object[methods.length + 1];
+		Object[] parameterValues = new Object[methods.length + 2];
 		parameterValues[0] = field.get(object);
+		parameterValues[1] = field.getName();
 		for(int i = 0; i < methods.length; i++)
 		{
 			var method = methods[i];
 			method.setAccessible(true);
-			parameterValues[i+1] = method.invoke(annotation, (Object[])null);
+			parameterValues[i+2] = method.invoke(annotation, (Object[])null);
 		}
 		return parameterValues;
 	}

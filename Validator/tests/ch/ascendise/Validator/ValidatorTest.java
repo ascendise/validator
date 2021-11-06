@@ -62,5 +62,34 @@ class ValidatorTest {
 		System.out.println(errorMessage);
 		assertFalse(errorMessage.isBlank(), "Error list does not contain all errors");
 	}
+	
+	@Test
+	void invalidObject_FieldNameInErrorMessage()
+	{
+		var validator = new ValidatorImpl(invalidTestObject);
+		String errorMessage = validator.getErrorMessage();
+		var fieldNames = getFieldNames(invalidTestObject.getClass());
+		var containsAllFieldNames = true;
+		for(var fieldName : fieldNames)
+		{
+			if(!errorMessage.contains(fieldName))
+			{
+				containsAllFieldNames = false;
+				break;
+			}
+		}
+		assertTrue(containsAllFieldNames, "Error Message does not contain all field names");
+	}
+	
+	String[] getFieldNames(Class<?> type)
+	{
+		var fields = type.getFields();
+		var fieldNames = new String[fields.length];
+		for(int i = 0; i < fields.length; i++)
+		{
+			fieldNames[i] = fields[i].getName();
+		}
+		return fieldNames;
+	}
 
 }

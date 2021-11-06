@@ -3,10 +3,12 @@ package ch.ascendise.Validator;
 public class NotNullValidator implements Validator{
 	
 	private Object object;
+	private String fieldName;
 	
-	public NotNullValidator(Object object)
+	public NotNullValidator(Object object, String fieldName)
 	{
 		this.object = object;
+		this.fieldName = fieldName;
 	}
 
 	@Override
@@ -20,7 +22,7 @@ public class NotNullValidator implements Validator{
 		{
 			return "";
 		}
-		return "Field is null";
+		return fieldName + ": Value is null";
 	}
 
 }

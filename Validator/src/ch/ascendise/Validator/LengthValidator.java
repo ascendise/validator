@@ -4,12 +4,14 @@ public class LengthValidator implements Validator
 {
 	
 	private Object object;
+	private String fieldName;
 	private int min;
 	private int max;
 	
-	public LengthValidator(Object object, int min, int max)
+	public LengthValidator(Object object, String fieldName, int min, int max)
 	{
 		this.object = object;
+		this.fieldName = fieldName;
 		this.min = min;
 		this.max = max;
 	}
@@ -29,8 +31,8 @@ public class LengthValidator implements Validator
 		{
 			return "";
 		}
-		var message = "Field value does not fit into constraints; min = %d, max = %d";
-		return String.format(message, min, max);
+		var message = "%s: Value does not fit into constraints; min = %d, max = %d";
+		return String.format(message, fieldName, min, max);
 	}
 
 }
