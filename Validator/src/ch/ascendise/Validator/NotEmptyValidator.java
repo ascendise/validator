@@ -1,20 +1,16 @@
 package ch.ascendise.Validator;
 
-public class NotEmptyValidator implements Validator{
-	
-	private Object value;
-	private String fieldName;
-	
-	public NotEmptyValidator(Object value, String fieldName)
+public class NotEmptyValidator extends AbstractValidator
+{
+	public NotEmptyValidator(Object object, String fieldName)
 	{
-		this.value = value;
-		this.fieldName = fieldName;
+		super(object, fieldName);
 	}
 
 	@Override
 	public boolean isValid() 
 	{
-		String s = (String)value;
+		String s = (String)object;
 		return !s.isEmpty();
 	}
 

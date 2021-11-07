@@ -1,14 +1,11 @@
 package ch.ascendise.Validator;
 
-public class NotNullValidator implements Validator{
-	
-	private Object object;
-	private String fieldName;
+public class NotNullValidator extends AbstractValidator
+{
 	
 	public NotNullValidator(Object object, String fieldName)
 	{
-		this.object = object;
-		this.fieldName = fieldName;
+		super(object, fieldName);
 	}
 
 	@Override

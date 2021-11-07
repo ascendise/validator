@@ -1,17 +1,13 @@
 package ch.ascendise.Validator;
 
-public class LengthValidator implements Validator
+public class LengthValidator extends AbstractValidator
 {
-	
-	private Object object;
-	private String fieldName;
 	private int min;
 	private int max;
 	
 	public LengthValidator(Object object, String fieldName, int min, int max)
 	{
-		this.object = object;
-		this.fieldName = fieldName;
+		super(object, fieldName);
 		this.min = min;
 		this.max = max;
 	}
