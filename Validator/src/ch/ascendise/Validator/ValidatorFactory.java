@@ -2,7 +2,6 @@ package ch.ascendise.Validator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,47 +38,15 @@ public class ValidatorFactory {
 	{
 		try
 		{
-			Class<?>[] parameterTypes = getParameterTypes(annotation);
-			Object[] parameterValues = getParameterValues(annotation);
 			var validatorType = getValidatorType(annotation);
-			var constructor = validatorType.getConstructor(parameterTypes);
-			return constructor.newInstance(parameterValues);
+			var constructor = validatorType.getConstructors()[0];
+			return (Validator) constructor.newInstance(field.get(object), field.getName(), annotation);
 		}
 		catch(ReflectiveOperationException ex)
 		{
 			ex.printStackTrace();
 			return null;
 		}
-	}
-	
-	private Class<?>[] getParameterTypes(Annotation annotation)
-	{
-		Method[] methods = annotation.annotationType().getDeclaredMethods();
-		Class<?>[] parameterTypes = new Class<?>[methods.length + 2];
-		parameterTypes[0] = Object.class;
-		parameterTypes[1] = String.class;
-		for(int i = 0; i < methods.length; i++)
-		{
-			var method = methods[i];
-			method.setAccessible(true);
-			parameterTypes[i+2] = method.getReturnType();
-		}
-		return parameterTypes;
-	}
-	
-	private Object[] getParameterValues(Annotation annotation) throws ReflectiveOperationException
-	{
-		Method[] methods = annotation.annotationType().getDeclaredMethods();
-		Object[] parameterValues = new Object[methods.length + 2];
-		parameterValues[0] = field.get(object);
-		parameterValues[1] = field.getName();
-		for(int i = 0; i < methods.length; i++)
-		{
-			var method = methods[i];
-			method.setAccessible(true);
-			parameterValues[i+2] = method.invoke(annotation, (Object[])null);
-		}
-		return parameterValues;
 	}
 	
 	private Class<? extends Validator> getValidatorType(Annotation annotation)
