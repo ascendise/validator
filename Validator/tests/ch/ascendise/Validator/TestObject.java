@@ -2,7 +2,7 @@ package ch.ascendise.Validator;
 
 import ch.ascendise.Validator.Annotations.*;
 
-public class TestObject {
+class TestObject {
 		@NotNull
 		private String notNull;
 		@Length(max = 20)
