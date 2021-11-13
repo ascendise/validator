@@ -16,7 +16,7 @@ class LengthValidatorTest {
 			@Length(min = 3)
 			public String minLength = "123";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Valid field failed");
 	}
@@ -29,7 +29,7 @@ class LengthValidatorTest {
 			@Length(min = 3)
 			public String minLength = "12";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Field with not enough characters passed");
 	}
@@ -42,7 +42,7 @@ class LengthValidatorTest {
 			@Length(max = 5)
 			public String maxLength = "12345";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Valid field failed");
 	}
@@ -55,7 +55,7 @@ class LengthValidatorTest {
 			@Length(max = 5)
 			public String maxLength = "123456";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Field with too many characters passed");
 	}
@@ -68,7 +68,7 @@ class LengthValidatorTest {
 			@Length(min = 2, max = 4)
 			public String range = "123";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Valid field failed");
 	}
@@ -81,7 +81,7 @@ class LengthValidatorTest {
 			@Length(min = 2, max = 4)
 			public String range = "1";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Field with not enough characters passed");
 	}
@@ -94,7 +94,7 @@ class LengthValidatorTest {
 			@Length(min = 2, max = 4)
 			public String range = "12345";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Field with too many characters passed");
 	}

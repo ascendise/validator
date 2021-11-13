@@ -16,7 +16,7 @@ class NotBlankValidatorTest {
 			@NotBlank
 			private String notBlank = "aaaa";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Correct field got detected as invalid");
 	}
@@ -29,7 +29,7 @@ class NotBlankValidatorTest {
 			@NotBlank
 			private String blank = " ";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Invalid field passed");
 	}

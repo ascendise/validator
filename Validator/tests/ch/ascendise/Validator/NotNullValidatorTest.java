@@ -16,7 +16,7 @@ class NotNullValidatorTest {
 			@NotNull
 			private Object notNull = new Object();
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Field got falsely detected as invalid");
 	}
@@ -29,7 +29,7 @@ class NotNullValidatorTest {
 			@NotNull
 			private Object isNull = null;
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Null field did not get detected as null");
 	}
@@ -42,7 +42,7 @@ class NotNullValidatorTest {
 			@NotNull
 			private int someField;
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Primitive type field detected with value null");
 	}

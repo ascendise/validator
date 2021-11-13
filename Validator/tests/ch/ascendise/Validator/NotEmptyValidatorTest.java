@@ -16,7 +16,7 @@ class NotEmptyValidatorTest {
 			@NotEmpty
 			private String notEmpty = "IHaveContent";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid  = validator.isValid();
 		assertTrue(isValid, "Correct field value got detected as invalid");
 	}
@@ -29,7 +29,7 @@ class NotEmptyValidatorTest {
 			@NotEmpty
 			private String whitespace = "       ";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertTrue(isValid, "Correct field value got detected as invalid");
 	}
@@ -42,7 +42,7 @@ class NotEmptyValidatorTest {
 			@NotEmpty
 			private String empty = "";
 		}
-		var validator = new ValidatorImpl(new Test());
+		var validator = new POJOValidator(new Test());
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Incorrect field value not detected");
 	}

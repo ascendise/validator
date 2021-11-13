@@ -40,7 +40,7 @@ class ValidatorTest {
 	@Test
 	void validObject_isValid()
 	{
-		var validator = new ValidatorImpl(validTestObject);
+		var validator = new POJOValidator(validTestObject);
 		boolean isValid = validator.isValid();
 		validator.getErrorMessage();
 		assertTrue(isValid, "Valid object got identified as invalid");
@@ -49,7 +49,7 @@ class ValidatorTest {
 	@Test
 	void invalidObject_isValid()
 	{
-		var validator = new ValidatorImpl(invalidTestObject);
+		var validator = new POJOValidator(invalidTestObject);
 		boolean isValid = validator.isValid();
 		assertFalse(isValid, "Invalid object got identified as invalid");
 	}
@@ -57,7 +57,7 @@ class ValidatorTest {
 	@Test
 	void invalidObject_getErrors()
 	{
-		var validator = new ValidatorImpl(invalidTestObject);
+		var validator = new POJOValidator(invalidTestObject);
 		String errorMessage = validator.getErrorMessage();
 		System.out.println(errorMessage);
 		assertFalse(errorMessage.isBlank(), "Error list does not contain all errors");
@@ -66,7 +66,7 @@ class ValidatorTest {
 	@Test
 	void invalidObject_FieldNameInErrorMessage()
 	{
-		var validator = new ValidatorImpl(invalidTestObject);
+		var validator = new POJOValidator(invalidTestObject);
 		String errorMessage = validator.getErrorMessage();
 		var fieldNames = getFieldNames(invalidTestObject.getClass());
 		var containsAllFieldNames = true;
