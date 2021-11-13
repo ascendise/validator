@@ -29,7 +29,7 @@ public class LengthValidator extends AbstractValidator
 		{
 			return "";
 		}
-		var message = "%s: Value does not fit into constraints; min = %d, max = %d";
+		var message = "%s: Length of the value does not fit into constraints; min = %d, max = %d";
 		return String.format(message, fieldName, min, max);
 	}
 
