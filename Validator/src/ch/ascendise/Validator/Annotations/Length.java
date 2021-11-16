@@ -9,9 +9,6 @@ import ch.ascendise.Validator.LengthValidator;
  * has to fit into constraints.
  * Length should not be less than min
  * Length should not be more than max
- * 
- * @param min minimum length for string
- * @param max maximum length for string
  *
  */
 @Target(ElementType.FIELD)
@@ -19,7 +16,14 @@ import ch.ascendise.Validator.LengthValidator;
 @ValidatorType(LengthValidator.class)
 public @interface Length {
 	
+	/**
+	 * @return maximum length for string
+	 */
 	int max() default Integer.MAX_VALUE;
+	/**
+	 * 
+	 * @return minimum length for string
+	 */
 	int min() default 0;
 
 }
