@@ -9,6 +9,8 @@ import ch.ascendise.Validator.NotBlankValidator;
  * 
  * Field has to have at least one printable character (excludes whitespace)
  * to be considered valid
+ * 
+ * Field should not be null
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

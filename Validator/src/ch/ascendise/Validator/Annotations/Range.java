@@ -8,6 +8,8 @@ import ch.ascendise.Validator.RangeValidator;
  * 
  * Annotated numeric field value should be
  * in the specified range.
+ * 
+ * null fields are not allowed
  *
  */
 @Target(ElementType.FIELD)

@@ -8,6 +8,8 @@ import ch.ascendise.Validator.NotEmptyValidator;
  * 
  * The length of the string value has to be more than 0
  * for the field to be considered valid
+ * 
+ * The field should not be null
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

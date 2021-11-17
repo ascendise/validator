@@ -9,6 +9,8 @@ import ch.ascendise.Validator.LengthValidator;
  * has to fit into constraints.
  * Length should not be less than min
  * Length should not be more than max
+ * 
+ * Null values are treated as strings with length 0
  *
  */
 @Target(ElementType.FIELD)
