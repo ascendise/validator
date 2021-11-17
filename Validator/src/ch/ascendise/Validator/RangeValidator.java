@@ -28,7 +28,7 @@ public class RangeValidator extends AbstractValidator{
 		{
 			return "";
 		}
-		var message = "%s: Field value is outside defined constraints! value = %f; min = %f; max = %f";
+		var message = "%s: Field value is outside defined constraints! value = %s; min = %f; max = %f";
 		return String.format(message, fieldName, object, min, max);
 	}
 
