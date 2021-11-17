@@ -16,7 +16,8 @@ public class RangeValidator extends AbstractValidator{
 	@Override
 	public boolean isValid() 
 	{
-		double value = (double)object;
+		Number number = (Number)object;
+		double value = number.doubleValue();
 		return value >= min && value <= max;
 	}
 

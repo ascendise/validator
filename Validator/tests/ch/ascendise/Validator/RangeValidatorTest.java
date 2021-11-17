@@ -79,5 +79,28 @@ class RangeValidatorTest {
 		var validator = new POJOValidator(new Test());
 		assertFalse(validator.isValid(), "Value out of range considered valid");
 	}
-
+	
+	@Test
+	void validIntegerValue()
+	{
+		class Test
+		{
+			@Range(min = 2.5, max = 4.5)
+			private int value = 3;
+		}
+		var validator = new POJOValidator(new Test());
+		assertTrue(validator.isValid(), "Integer value in range considered invalid");
+	}
+	
+	@Test
+	void invalidIntegerValue()
+	{
+		class Test
+		{
+			@Range(min = 2.5, max = 4.5)
+			private int value = 5;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid(), "Integer value out of range considered valid");
+	}
 }
