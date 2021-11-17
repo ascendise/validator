@@ -33,5 +33,17 @@ class NotBlankValidatorTest {
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Invalid field passed");
 	}
+	
+	@Test
+	void invalidValue_null()
+	{
+		class Test
+		{
+			@NotBlank
+			private String blank = null;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid(), "Null value field considered valid");
+	}
 
 }

@@ -46,4 +46,16 @@ class NotEmptyValidatorTest {
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Incorrect field value not detected");
 	}
+	
+	@Test
+	void invalidFieldValue_null()
+	{
+		class Test
+		{
+			@NotEmpty
+			private String empty = null;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid(), "Field with null value considered valid");
+	}
 }

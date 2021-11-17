@@ -98,5 +98,18 @@ class LengthValidatorTest {
 		var isValid = validator.isValid();
 		assertFalse(isValid, "Field with too many characters passed");
 	}
+	
+	@Test
+	void invalidValue_null()
+	{
+		class Test
+		{
+			@Length(min = 5)
+			public String value = null;
+		}
+		var validator = new POJOValidator(new Test());
+		var isValid = validator.isValid();
+		assertFalse(isValid, "Null field should not be null");
+	}
 
 }

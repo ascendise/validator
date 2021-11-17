@@ -2,6 +2,8 @@ package ch.ascendise.Validator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Test;
 
 import ch.ascendise.Validator.Annotations.Range;
@@ -115,5 +117,17 @@ class RangeValidatorTest {
 		var validator = new POJOValidator(new Test());
 		String s = validator.getErrorMessage();
 		assertFalse(s.isEmpty(), "Error Message is empty on invalid value");
+	}
+	
+	@Test
+	void invalidValue_null()
+	{
+		class Test
+		{
+			@Range(min = 2)
+			private BigDecimal decimal = null;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid());
 	}
 }

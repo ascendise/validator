@@ -17,6 +17,10 @@ public class RangeValidator extends AbstractValidator{
 	public boolean isValid() 
 	{
 		Number number = (Number)object;
+		if(number == null)
+		{
+			return false;
+		}
 		double value = number.doubleValue();
 		return value >= min && value <= max;
 	}

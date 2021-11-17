@@ -14,7 +14,7 @@ public class NotBlankValidator extends AbstractValidator
 	public boolean isValid() 
 	{
 		String s = (String)object;
-		return !s.isBlank();
+		return s != null && !s.isBlank();
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public class NotEmptyValidator extends AbstractValidator
 	public boolean isValid() 
 	{
 		String s = (String)object;
-		return !s.isEmpty();
+		return s != null && !s.isEmpty();
 	}
 
 	@Override
