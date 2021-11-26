@@ -11,9 +11,9 @@ import java.lang.annotation.Annotation;
  */
 public abstract class AbstractValidator implements Validator 
 {
-	protected Object object;
-	protected String fieldName;
-	protected Annotation annotation;
+	private Object object;
+	private String fieldName;
+	private Annotation annotation;
 	
 	/**
 	 * Constructor should not be called explicitly
@@ -29,5 +29,34 @@ public abstract class AbstractValidator implements Validator
 		this.object = object;
 		this.fieldName = fieldName;
 		this.annotation = annotation;
+	}
+	
+	/**
+	 * Value of the object that is validated
+	 * @return value to be validated
+	 */
+	public Object getObject()
+	{
+		return object;
+	}
+	
+	/**
+	 * Name of the field that is validated
+	 * @return Name of field to be validated
+	 */
+	public String getFieldName()
+	{
+		return fieldName;
+	}
+	
+	/**
+	 * Annotation that specifies how the field is validated
+	 * and includes all the values for constraints.
+	 * e.g. Length-Annotation with values for min and max length
+	 * @return Validation annotation
+	 */
+	public Annotation getAnnotation()
+	{
+		return annotation;
 	}
 }

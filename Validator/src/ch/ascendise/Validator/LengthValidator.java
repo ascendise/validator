@@ -35,7 +35,7 @@ public class LengthValidator extends AbstractValidator
 			return "";
 		}
 		var message = "%s: Length of the value does not fit into constraints;Length = %d min = %d, max = %d";
-		return String.format(message, fieldName, value.length(), min, max);
+		return String.format(message, super.getFieldName(), value.length(), min, max);
 	}
 
 }

@@ -12,7 +12,7 @@ public class NotNullValidator extends AbstractValidator
 
 	@Override
 	public boolean isValid() {
-		return (object != null);
+		return (super.getObject() != null);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class NotNullValidator extends AbstractValidator
 		{
 			return "";
 		}
-		return fieldName + ": Value is null";
+		return super.getFieldName() + ": Value is null";
 	}
 
 }

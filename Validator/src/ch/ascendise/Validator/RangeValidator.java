@@ -16,7 +16,7 @@ public class RangeValidator extends AbstractValidator{
 	@Override
 	public boolean isValid() 
 	{
-		Number number = (Number)object;
+		Number number = (Number)super.getObject();
 		if(number == null)
 		{
 			return false;
@@ -33,7 +33,7 @@ public class RangeValidator extends AbstractValidator{
 			return "";
 		}
 		var message = "%s: Field value is outside defined constraints! value = %s; min = %f; max = %f";
-		return String.format(message, fieldName, object, min, max);
+		return String.format(message, super.getFieldName(), super.getObject(), min, max);
 	}
 
 }

@@ -13,7 +13,7 @@ public class NotBlankValidator extends AbstractValidator
 	@Override
 	public boolean isValid() 
 	{
-		String s = (String)object;
+		String s = (String)super.getObject();
 		return s != null && !s.isBlank();
 	}
 
@@ -24,7 +24,7 @@ public class NotBlankValidator extends AbstractValidator
 		{
 			return "";
 		}
-		return fieldName + ": Value is blank";
+		return super.getFieldName() + ": Value is blank";
 	}
 
 }
