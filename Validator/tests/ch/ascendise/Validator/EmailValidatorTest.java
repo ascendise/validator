@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import ch.ascendise.Validator.Annotations.Email;
 
-public class EmailValidatorTest 
+class EmailValidatorTest 
 {
 
 	@Test
