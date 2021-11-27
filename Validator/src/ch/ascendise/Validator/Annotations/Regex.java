@@ -7,10 +7,20 @@ import java.lang.annotation.Target;
 
 import ch.ascendise.Validator.RegexValidator;
 
+/**
+ * Annotated field string value should fit into
+ * specified regex pattern to pass.
+ * 
+ * value should not be null
+ */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @ValidatorType(RegexValidator.class)
 public @interface Regex {
 
+	/**
+	 * 
+	 * @return regex pattern
+	 */
 	String value() default "";
 }
