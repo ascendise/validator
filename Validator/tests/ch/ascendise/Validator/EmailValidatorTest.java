@@ -93,6 +93,18 @@ public class EmailValidatorTest
 		assertFalse(validator.isValid(), "email without domain passed");
 	}
 	
+	@Test
+	void invalidEmail_nullValue()
+	{
+		class Test
+		{
+			@Email
+			private String email = null;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid(), "null value as email passed");
+	}
+	
 	
 	
 
