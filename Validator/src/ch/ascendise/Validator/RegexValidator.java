@@ -18,6 +18,10 @@ public class RegexValidator extends AbstractValidator
 	@Override
 	public boolean isValid() 
 	{
+		if(super.getObject() == null)
+		{
+			return false;
+		}
 		var pattern = Pattern.compile(this.pattern);
 		String value = (String)super.getObject();
 		var matcher = pattern.matcher(value);

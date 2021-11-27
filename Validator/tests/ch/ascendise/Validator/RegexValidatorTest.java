@@ -35,5 +35,17 @@ class RegexValidatorTest
 		assertFalse(validator.isValid(), "Invalid regex passed");
 	}
 	
+	@Test
+	void invalidRegex_nullValue()
+	{
+		class Test
+		{
+			@Regex("")
+			private String value = null;
+		}
+		var validator = new POJOValidator(new Test());
+		assertFalse(validator.isValid(), "Null value passed");
+	}
+	
 
 }
