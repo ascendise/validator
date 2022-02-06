@@ -5,11 +5,12 @@ import java.lang.annotation.*;
 import ch.ascendise.Validator.LengthValidator;
 
 /**
- * Annotated fields string value length 
- * has to fit into constraints.
- * Length should not be less than min
- * Length should not be more than max
- * 
+ * Annotated fields string value length has to fit into constraints.
+ * <br>
+ * Length should not be less than min.
+ * <br>
+ * Length should not be more than max.
+ * <br>
  * Null values are treated as strings with length 0
  *
  */
@@ -23,7 +24,6 @@ public @interface Length {
 	 */
 	int max() default Integer.MAX_VALUE;
 	/**
-	 * 
 	 * @return minimum length for string
 	 */
 	int min() default 0;

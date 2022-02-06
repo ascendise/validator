@@ -1,5 +1,13 @@
 package ch.ascendise.Validator;
 
+/**
+ * The Validator is responsible for making sure that a value
+ * fits into the specified constraints
+ * <br>
+ * It returns if the value fits the constraints or not and also provides
+ * a descriptive error message.
+ * <br>
+ */
 public interface Validator {
 	
 	/**

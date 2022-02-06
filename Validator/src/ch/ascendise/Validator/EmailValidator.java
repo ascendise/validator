@@ -1,12 +1,24 @@
 package ch.ascendise.Validator;
 
-import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 
+import ch.ascendise.Validator.Annotations.Email;
+
+/**
+ * This is a validator for validating email fields.
+ * 
+ * @see ch.ascendise.Validator.Annotations.Email
+ */
 public final class EmailValidator extends AbstractValidator
 {
 
-	protected EmailValidator(Object object, String fieldName, Annotation annotation)
+	/**
+	 * Creates a new instance of the EmailValidator.
+	 * @param object Value that gets validated.
+	 * @param fieldName Name of the field.
+	 * @param annotation Annotation the field was annotated with
+	 */
+	protected EmailValidator(Object object, String fieldName, Email annotation)
 	{
 		super(object, fieldName, annotation);
 	}

@@ -6,10 +6,10 @@ import ch.ascendise.Validator.NotBlankValidator;
 
 /**
  * Annotated fields string value should not be blank.
- * 
+ * <br>
  * Field has to have at least one printable character (excludes whitespace)
  * to be considered valid
- * 
+ * <br>
  * Field should not be null
  */
 @Target(ElementType.FIELD)

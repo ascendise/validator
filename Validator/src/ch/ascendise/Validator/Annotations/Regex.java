@@ -8,9 +8,8 @@ import java.lang.annotation.Target;
 import ch.ascendise.Validator.RegexValidator;
 
 /**
- * Annotated field string value should fit into
- * specified regex pattern to pass.
- * 
+ * Annotated field string value should fit into specified regex pattern to pass.
+ * <br>
  * value should not be null
  */
 @Target(ElementType.FIELD)

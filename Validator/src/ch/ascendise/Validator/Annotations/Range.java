@@ -5,10 +5,8 @@ import java.lang.annotation.*;
 import ch.ascendise.Validator.RangeValidator;
 
 /**
- * 
- * Annotated numeric field value should be
- * in the specified range.
- * 
+ * Annotated numeric field value should be in the specified range.
+ * <br>
  * null fields are not allowed
  *
  */

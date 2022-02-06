@@ -7,10 +7,10 @@ import java.util.List;
  * The object to be validated gets passed to this validator
  * The validator than gets all the validators for the object
  * specified by the annotations a field is annotated with.
- * 
+ * <br>
  * The operations of this validator then iterate over all the validators
  * it has found and return a summary.
- *
+ * <br>
  * The validator does not check any constraints directly, but is only responsible
  * for getting the results of the other validators.
  */
