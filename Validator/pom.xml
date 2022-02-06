@@ -17,6 +17,20 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <name>ascendise</name>
+      <email>ascendise@gmail.com</email>
+      <organizationUrl>https://github.com/ascendise</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/simpligility/ossrh-demo.git</connection>
+    <developerConnection>scm:git:ssh://github.com:ascendise/Validator.git</developerConnection>
+    <url>https://github.com/ascendise/Validator</url>
+  </scm>
+
   <properties>
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
