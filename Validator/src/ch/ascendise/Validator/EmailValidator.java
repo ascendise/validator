@@ -7,6 +7,7 @@ import ch.ascendise.Validator.Annotations.Email;
 /**
  * This is a validator for validating email fields.
  * 
+ * @see ch.ascendise.Validator.Annotations.Email
  */
 public final class EmailValidator extends AbstractValidator
 {
