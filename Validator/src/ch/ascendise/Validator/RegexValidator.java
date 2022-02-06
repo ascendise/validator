@@ -4,12 +4,12 @@ import java.util.regex.Pattern;
 
 import ch.ascendise.Validator.Annotations.Regex;
 
-public class RegexValidator extends AbstractValidator 
+public final class RegexValidator extends AbstractValidator 
 {
 	
 	private String pattern;
 
-	public RegexValidator(Object object, String fieldName, Regex regex) 
+	protected RegexValidator(Object object, String fieldName, Regex regex) 
 	{
 		super(object, fieldName, regex);
 		pattern = regex.value();

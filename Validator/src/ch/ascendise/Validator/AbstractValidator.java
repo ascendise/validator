@@ -24,7 +24,7 @@ public abstract class AbstractValidator implements Validator
 	 * @param fieldName Name of the field that gets validated. Can and should be used for error messages.
 	 * @param annotation Annotation that identifies which validator is used and might hold values needed for validation
 	 */
-	public AbstractValidator(Object object, String fieldName, Annotation annotation)
+	protected AbstractValidator(Object object, String fieldName, Annotation annotation)
 	{
 		this.object = object;
 		this.fieldName = fieldName;

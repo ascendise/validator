@@ -3,10 +3,10 @@ package ch.ascendise.Validator;
 import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 
-public class EmailValidator extends AbstractValidator
+public final class EmailValidator extends AbstractValidator
 {
 
-	public EmailValidator(Object object, String fieldName, Annotation annotation)
+	protected EmailValidator(Object object, String fieldName, Annotation annotation)
 	{
 		super(object, fieldName, annotation);
 	}

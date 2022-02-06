@@ -5,7 +5,7 @@ import ch.ascendise.Validator.Annotations.NotNull;
 public class NotNullValidator extends AbstractValidator
 {
 	
-	public NotNullValidator(Object object, String fieldName, NotNull notNull)
+	protected NotNullValidator(Object object, String fieldName, NotNull notNull)
 	{
 		super(object, fieldName, notNull);
 	}

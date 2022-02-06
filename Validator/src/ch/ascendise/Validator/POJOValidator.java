@@ -14,7 +14,7 @@ import java.util.List;
  * The validator does not check any constraints directly, but is only responsible
  * for getting the results of the other validators.
  */
-public class POJOValidator implements Validator{
+public final class POJOValidator implements Validator{
 	
 	private Object object;
 	private List<Validator> validators;

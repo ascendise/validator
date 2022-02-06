@@ -2,13 +2,13 @@ package ch.ascendise.Validator;
 
 import ch.ascendise.Validator.Annotations.Length;
 
-public class LengthValidator extends AbstractValidator
+public final class LengthValidator extends AbstractValidator
 {
 	private int min;
 	private int max;
 	private String value;
 	
-	public LengthValidator(Object object, String fieldName, Length length)
+	protected LengthValidator(Object object, String fieldName, Length length)
 	{
 		super(object, fieldName, length);
 		this.min = length.min();

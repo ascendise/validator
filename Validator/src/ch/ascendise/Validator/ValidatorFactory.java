@@ -7,19 +7,19 @@ import java.util.List;
 
 import ch.ascendise.Validator.Annotations.*;
 
-public class ValidatorFactory {
+final class ValidatorFactory {
 	
 	private Object object;
 	private Field field;
 	
-	public ValidatorFactory(Object object, Field field)
+	ValidatorFactory(Object object, Field field)
 	{
 		this.object = object;
 		this.field = field;
 		field.setAccessible(true);
 	}
 	
-	public List<Validator> getValidators()
+	List<Validator> getValidators()
 	{
 		var validators = new ArrayList<Validator>();
 		var annotations = field.getDeclaredAnnotations();
@@ -39,7 +39,8 @@ public class ValidatorFactory {
 		try
 		{
 			var validatorType = getValidatorType(annotation);
-			var constructor = validatorType.getConstructors()[0];
+			var constructor = validatorType.getDeclaredConstructors()[0];
+			constructor.setAccessible(true);
 			return (Validator) constructor.newInstance(field.get(object), field.getName(), annotation);
 		}
 		catch(ReflectiveOperationException ex)

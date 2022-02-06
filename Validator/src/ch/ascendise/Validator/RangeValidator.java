@@ -2,12 +2,12 @@ package ch.ascendise.Validator;
 
 import ch.ascendise.Validator.Annotations.Range;
 
-public class RangeValidator extends AbstractValidator{
+public final class RangeValidator extends AbstractValidator{
 	
 	private double min;
 	private double max;
 
-	public RangeValidator(Object object, String fieldName, Range range) {
+	protected RangeValidator(Object object, String fieldName, Range range) {
 		super(object, fieldName, range);
 		this.min = range.min();
 		this.max = range.max();

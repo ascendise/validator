@@ -2,9 +2,9 @@ package ch.ascendise.Validator;
 
 import ch.ascendise.Validator.Annotations.NotEmpty;
 
-public class NotEmptyValidator extends AbstractValidator
+public final class NotEmptyValidator extends AbstractValidator
 {
-	public NotEmptyValidator(Object object, String fieldName, NotEmpty notEmpty)
+	protected NotEmptyValidator(Object object, String fieldName, NotEmpty notEmpty)
 	{
 		super(object, fieldName, notEmpty);
 	}
