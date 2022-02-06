@@ -11,5 +11,8 @@ import ch.ascendise.Validator.AbstractValidator;
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidatorType {
+	/**
+	 * @return type of Validator
+	 */
 	Class<? extends AbstractValidator> value();
 }
