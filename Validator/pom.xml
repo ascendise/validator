@@ -2,7 +2,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.ascendise.Validator</groupId>
   <artifactId>Validator</artifactId>
-  <version>1.0.0</version>  <properties>
+  <version>1.0.0</version>  
+  <packaging>jar</packaging>
+
+  <name>Validator</name>
+  <description>This is a lightweight and simple annotation-based tool for validating Java Objects</description>
+  <url>https://github.com/ascendise/Validator</url>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <properties>
     <maven.compiler.source>1.14</maven.compiler.source>
     <maven.compiler.target>1.14</maven.compiler.target>
   </properties>
