@@ -3,9 +3,9 @@ package ch.ascendise.Validator;
 import java.lang.annotation.Annotation;
 
 /**
- * AbstractValidator is the abstract base classed used
+ * AbstractValidator is the abstract base class used
  * for implementing custom validators. 
- * 
+ * <br>
  * This validator handles one field of an object.
  *
  */
