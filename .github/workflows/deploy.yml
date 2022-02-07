@@ -22,7 +22,9 @@ jobs:
         gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
         gpg-passphrase: GPG_PASSPHRASE
     - name: Publish to Maven Central
-      run: mvn deploy -f Validator/pom.xml
+      run: | 
+          export MAVEN_OPTS="--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
+          mvn deploy -f Validator/pom.xml
       env:
         MAVEN_USERNAME: ascendise
         MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
