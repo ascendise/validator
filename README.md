@@ -2,7 +2,7 @@
 
 This validator is a lightweight and simple tool for validating Java Objects.
 
-[Javadoc](https://ascendise.github.io/Validator)
+[Javadoc](https://ascendise.github.io/validator)
 
 ## Create your own annotation for validating objects
 
